@@ -107,9 +107,27 @@ class NewsApp
     end
 
     def search_by_category
+        puts "Available categories:"
+        NewsService::CATEGORIES.each { |key, value| puts "#{key}. #{value}" }
+        print "Enter the category number: "
+        puts ""
+        category_number = gets.chomp.to_i
+      
+        if category_number.nil?
+          puts "Invalid category number. Available categories:"
+          NewsService::CATEGORIES.each { |key, value| puts "#{key}. #{value}" }
+          return
+        end
+      
+        NewsService.search_by_category(category_number)
     end
-
+      
     def search_by_keyword
+        puts "Enter a keyword to search for news:"
+        keyword = gets.chomp
+          
+        NewsService.search_by_keyword(keyword)
+    end
 
     def exit_app
         puts "Goodbye!"
