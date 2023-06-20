@@ -34,11 +34,13 @@ class NewsService
   
     sources = data['sources'].take(5)
   
-    sources.each do |source|
-      title = source['title']
-      description = source['description']
-      url = source['url']
+    sources.each.with_index(1) do |article, article_number|
+      title = article['title']
+      description = article['description']
+      url = article['url']
       puts ""
+      puts "Article #{article_number}:"
+      puts "Title: #{title}"
       puts "Description: #{description}"
       puts "URL: #{url}"
     end
@@ -58,11 +60,12 @@ class NewsService
 
     articles = data['articles'].take(5)
 
-    articles.each do |article|
+    articles.each.with_index(1) do |article, article_number|
       title = article['title']
       description = article['description']
       url = article['url']
       puts ""
+      puts "Article #{article_number}:"
       puts "Title: #{title}"
       puts "Description: #{description}"
       puts "URL: #{url}"
